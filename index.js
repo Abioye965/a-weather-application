@@ -29,8 +29,10 @@ async function checkWeather(city) {
     document.querySelector(".weather-icon").src = "images/snow.png";
   }
   console.log(data);
+  document.querySelector(".weather").style.display = "block";
 }
 searchBtn.addEventListener("click", function () {
+ 
   checkWeather(inputValue.value);
 });
 inputValue.addEventListener("keydown", function (e) {
