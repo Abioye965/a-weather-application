@@ -6,10 +6,15 @@ const apiUrl =
 async function checkWeather(city) {
   const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
   let data = await response.json();
-  if (data.cod !== 200) {
-    console.log("City not found or API issue");
-    return;
+
+  if (response.status === 404) {
+    document.querySelector(".error").style.display = "block";
+    document.querySelector(".weather").style.display = "none";
+  } else {
+    document.querySelector(".error").style.display = "none";
+    document.querySelector(".weather").style.display = "block";
   }
+
   document.querySelector(".city-name").innerHTML = data.name;
   document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
   document.querySelector(".temperature").innerHTML =
@@ -31,10 +36,11 @@ async function checkWeather(city) {
   console.log(data);
   document.querySelector(".weather").style.display = "block";
 }
+
 searchBtn.addEventListener("click", function () {
- 
   checkWeather(inputValue.value);
 });
+
 inputValue.addEventListener("keydown", function (e) {
   if (e.key === "Enter") {
     e.preventDefault();

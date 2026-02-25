@@ -47,6 +47,16 @@ body{
    color: #fff;
     text-align: center;
 }
+.error{
+    text-align: left;
+    font-size: 14px;
+    margin-left: 10px;
+    margin-top: 2px;
+    display: none;
+}
+.error p{
+    color: red;
+}
 .weather h3{
     font-size: 22px;
     font-weight: bold;
